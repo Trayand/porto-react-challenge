@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import "./style/Card.css";
 
-export default function MainPage() {
+export default function Main() {
   const [pokemons, setPokemons] = useState([]);
+
   useEffect(() => {
     const randomSkip = Math.floor(Math.random() * 939) + 1;
     fetch("https://pokeapi.co/api/v2/pokemon?limit=25&offset=" + randomSkip)

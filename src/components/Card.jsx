@@ -16,6 +16,6 @@ export default class Card extends Component {
   }
 
   clicked = () => {
-      alert(this.props.url)
+      this.props.setKeyword(this.props.name)
   }
 }

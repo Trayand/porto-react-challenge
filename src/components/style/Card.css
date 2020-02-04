@@ -17,10 +17,20 @@
 }
 
 .main-search {
+    width: auto;
+    position: absolute;
+    top: 20vh;
+    text-align: center;
+    padding: 5px;
+}
+
+.search-input{
+    outline: none;
     background-color: #282c34;
     color: white;
     padding: 5px 10px;
     text-align: center;
-    position: absolute;
-    top: 20vh;
+    margin-right: 5px;
+    height: 50px;
+    border-radius: 70px;
 }
