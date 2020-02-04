@@ -12,13 +12,13 @@
 
 .main-image {
     width: auto;
-    position: absolute;
+    /* position: absolute; */
     top: 5vh;
 }
 
 .main-search {
     width: auto;
-    position: absolute;
+    /* position: absolute; */
     top: 20vh;
     text-align: center;
     padding: 5px;
@@ -33,4 +33,17 @@
     margin-right: 5px;
     height: 50px;
     border-radius: 70px;
+}
+
+.image-renderer {
+    width: 15vw;
+    height: 20vh;
+}
+
+.holdem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 80vh;
 }
