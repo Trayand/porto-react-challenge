@@ -4,7 +4,7 @@ import Search from './Search';
 import Imgur from './ImageRender';
 import { Button } from 'react-bootstrap';
 import useRandomPokemon from '../hooks/RandomPokemon'
-import AllPokemon from './AllPokemon';
+
 import "../style/Card.css";
 
 
@@ -40,6 +40,8 @@ function MainPage(props) {
             <Button variant="light" onClick={() => {
                 setAngkaRandom(Math.random())
             }}> Gimme random pokemon </Button>
+
+
         </div>
     );
 }

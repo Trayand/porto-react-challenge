@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from "react-redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { thunk } from './middlewares'
 import pokemonReducer from "./reducers/pokemonReducer";
 

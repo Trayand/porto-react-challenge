@@ -60,7 +60,7 @@ function MainData({ pokeData, setPokeData }) {
                 <ul style={{ width: '30vw' }}>Abilities :{
                     pokeData.abilities
                         ? pokeData.abilities.map(({ ability }) => {
-                            return <li key={ability.name} style={{listStylePosition: 'inside'}}>{ability.name}</li>
+                            return <li key={ability.name} style={{ listStylePosition: 'inside' }}>{ability.name}</li>
                         })
                         : <li></li>
                 }</ul>
@@ -76,6 +76,11 @@ function MainData({ pokeData, setPokeData }) {
                     <BarChart barData={barData} />
                 </div>
             </div>
+            <h2 style={{marginTop: 150, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <span style={{ fontSize: 100 }}>&#8681;</span>
+                    All Pokemon Below
+                <span style={{ fontSize: 100 }}>&#8681;</span>
+            </h2>
         </div>
     )
 }

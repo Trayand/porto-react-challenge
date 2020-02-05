@@ -1,6 +1,6 @@
 
 
-export const fetchPokemonList = () => (dispatch, getState) => {
+const fetchPokemonList = () => (dispatch, getState) => {
     dispatch({
         type: 'FETCH_START'
     })
@@ -23,3 +23,5 @@ export const fetchPokemonList = () => (dispatch, getState) => {
 
         })
 }
+
+export default fetchPokemonList
