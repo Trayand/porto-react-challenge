@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./style/Card.css";
+import "../style/Card.css";
 import { Button } from 'react-bootstrap';
 import notfound from '../notfound.png'
 import load from '../spinner.gif'

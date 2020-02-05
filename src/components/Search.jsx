@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
-import "./style/Card.css";
+import "../style/Card.css";
 
 export default class Search extends Component {
   constructor(props) {

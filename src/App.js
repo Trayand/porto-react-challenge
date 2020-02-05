@@ -4,7 +4,7 @@ import './App.css';
 import MainPage from './components/MainPage';
 import MainData from './components/MainData';
 import { Button } from 'react-bootstrap';
-import "./components/style/Card.css";
+import "./style/Card.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
