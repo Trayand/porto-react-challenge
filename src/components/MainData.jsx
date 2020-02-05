@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import BarChart from './BarChart';
 
-function MainData({pokeData, setPokeData}) {
+function MainData({ pokeData, setPokeData }) {
     const [barData, setBarData] = useState({
         labels: ['Speed', 'Special-defence', 'Special-attack', 'Defence', 'Attack', 'HP'],
         datasets: [
@@ -21,46 +21,62 @@ function MainData({pokeData, setPokeData}) {
 
     // console.log(barData, 'ini console');
 
-    
+
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon/" + params.name)
             .then(response => {
                 return response.json();
             })
             .then(myJson => {
-                setPokeData(myJson)  
+                setPokeData(myJson)
                 setBarData(barData => ({
                     ...barData,
-                    datasets: [{ 
-                        ...barData.datasets[0], 
+                    datasets: [{
+                        ...barData.datasets[0],
                         label: params.name,
                         data: myJson.stats
                             ? myJson.stats.map(status => status.base_stat)
                             : barData.datasets[0].data
-                     }]
+                    }]
                 }))
             });
     }, [setPokeData, params.name])
 
     return (
-        <>
-            <p>{pokeData.name}</p>
-            {
-                pokeData.abilities
-                    ? pokeData.abilities.map(({ ability }) => {
-                        return <p key={ability.name}>{ability.name}</p>
-                    })
-                    : <p></p>
-            }
-            <img src={
-                pokeData.sprites
-                    ? pokeData.sprites.front_default
-                    : null
-            } style={{ height: 300, width: 300 }} />
-            <div style={{ height: 250 }}>
-                <BarChart barData={barData} />
+        <div style={{
+            width: '100vw',
+            height: '100vh'
+        }}>
+            <p style={{
+                color: 'black',
+                WebkitTextFillColor: 'black',
+                WebkitTextStrokeColor: 'white',
+                WebkitTextStrokeWidth: 2,
+                fontSize: 58,
+                textDecoration: 'underline',
+                margin: 70
+            }} >{pokeData.name}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                <ul style={{ width: '30vw' }}>Abilities :{
+                    pokeData.abilities
+                        ? pokeData.abilities.map(({ ability }) => {
+                            return <li key={ability.name} style={{listStylePosition: 'inside'}}>{ability.name}</li>
+                        })
+                        : <li></li>
+                }</ul>
+                <div style={{ width: '30vw' }}>
+                    <img src={
+                        pokeData.sprites
+                            ? pokeData.sprites.front_default
+                            : null
+                    } style={{ height: 300, width: 300 }} />
+
+                </div>
+                <div style={{ height: 250, width: '30vw' }}>
+                    <BarChart barData={barData} />
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 

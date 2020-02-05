@@ -11,7 +11,7 @@ function MainPage(props) {
     const [keyword, setKeyword] = useState('')
     const [pokemons, setPokemons] = useState([])
     const [angkaRandom, setAngkaRandom] = useState(0)
-     
+
     let poks = useRandomPokemon(angkaRandom)
     // console.log(poks);
     useEffect(() => {
@@ -24,7 +24,7 @@ function MainPage(props) {
             <img className={"main-image"} src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="" />
             <Search keyword={keyword} setKeyword={setKeyword} />
 
-            <Imgur keyword={keyword}/>
+            <Imgur keyword={keyword} />
 
             <ul className={"container"}>
                 {pokemons.map((pokemon, index) => {
@@ -36,10 +36,9 @@ function MainPage(props) {
                 })}
             </ul>
 
-            <Button onClick={()=>{
+            <Button variant="light" onClick={() => {
                 setAngkaRandom(Math.random())
-            }}>Re-random </Button>
-
+            }}> Gimme random pokemon </Button>
         </div>
     );
 }
