@@ -9,13 +9,13 @@ export default function AllPokemon(props) {
     const dispatch = useDispatch()
     const pokemons = useSelector(state => state.pokemon.data)
     const [totalLoad, setTotalLoad] = useState(32)
-    console.log(totalLoad)
+    // console.log(totalLoad)
 
     useEffect(() => {
         dispatch(fetchPokemonList())
-        const scrollHandler =  () => {
-            console.log(document.documentElement.scrollHeight +' '+ document.documentElement.scrollTop + ', ' + document.documentElement.clientHeight)
-            if(document.documentElement.scrollHeight === document.documentElement.scrollTop + document.documentElement.clientHeight){
+        const scrollHandler = () => {
+            // console.log(document.documentElement.scrollHeight +' '+ document.documentElement.scrollTop + ', ' + document.documentElement.clientHeight)
+            if (document.documentElement.scrollHeight === document.documentElement.scrollTop + document.documentElement.clientHeight) {
                 setTotalLoad(totalLoad => totalLoad + 32)
             }
         }
@@ -34,13 +34,13 @@ export default function AllPokemon(props) {
             top: 0,
             behavior: 'smooth'
         })
-        console.log(document.documentElement.scrollHeight +' '+ document.documentElement.scrollTop + ', ' + document.documentElement.clientHeight)
+        // console.log(document.documentElement.scrollHeight +' '+ document.documentElement.scrollTop + ', ' + document.documentElement.clientHeight)
         // alert(document.documentElement.scrollTop - (document.documentElement.scrollHeight -  document.documentElement.clientHeight) )
-    } 
+    }
 
     return (
         <>
-            <ul style={{marginBottom: 100}}>
+            <ul style={{ marginBottom: 100 }}>
                 {
                     pokemons.results
                         ? pokemons.results.slice(0, totalLoad).map(pokemon => {
@@ -54,6 +54,12 @@ export default function AllPokemon(props) {
                         : <p>kosong borr</p>
                 }
             </ul>
+
+            <p style={{ marginBottom: 50 }}>{
+                totalLoad > 966
+                ? ''
+                : 'scroll more to find more'
+            }</p>
         </>
     )
 }
