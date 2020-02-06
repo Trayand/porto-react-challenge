@@ -8,28 +8,42 @@ import { Link } from "react-router-dom";
 export default function AllPokemon(props) {
     const dispatch = useDispatch()
     const pokemons = useSelector(state => state.pokemon.data)
+    const [totalLoad, setTotalLoad] = useState(32)
+    console.log(totalLoad)
 
     useEffect(() => {
         dispatch(fetchPokemonList())
+        const scrollHandler =  () => {
+            console.log(document.documentElement.scrollHeight +' '+ document.documentElement.scrollTop + ', ' + document.documentElement.clientHeight)
+            if(document.documentElement.scrollHeight === document.documentElement.scrollTop + document.documentElement.clientHeight){
+                setTotalLoad(totalLoad => totalLoad + 32)
+            }
+        }
+        window.addEventListener('scroll', scrollHandler)
+        return () => {
+            window.removeEventListener('scroll', scrollHandler)
+        }
     }, [])
 
-    useEffect(() => {
-        console.log(pokemons);
-    })
+    // useEffect(() => {
+    //     alert(window.pageYOffset);
+    // },[document.documentElement.scrollTop])
 
     const scroller = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         })
+        console.log(document.documentElement.scrollHeight +' '+ document.documentElement.scrollTop + ', ' + document.documentElement.clientHeight)
+        // alert(document.documentElement.scrollTop - (document.documentElement.scrollHeight -  document.documentElement.clientHeight) )
     } 
 
     return (
         <>
-            <ul>
+            <ul style={{marginBottom: 100}}>
                 {
                     pokemons.results
-                        ? pokemons.results.map(pokemon => {
+                        ? pokemons.results.slice(0, totalLoad).map(pokemon => {
                             return <Link
                                 to={"/" + pokemon.name} key={pokemon.url}>
                                 <Button
