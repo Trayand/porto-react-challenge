@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import BarChart from './BarChart';
+import load from '../spinner.gif'
+import '../style/Card.css'
 
 function MainData({ pokeData, setPokeData }) {
     const [barData, setBarData] = useState({
@@ -56,27 +58,27 @@ function MainData({ pokeData, setPokeData }) {
                 textDecoration: 'underline',
                 margin: 70
             }} >{pokeData.name}</p>
-            <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
-                <ul style={{ width: '30vw' }}>Abilities :{
+            <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexFlow: 'row wrap' }}>
+                <ul style={{ width: '30vw' }} className="halft">Abilities :{
                     pokeData.abilities
                         ? pokeData.abilities.map(({ ability }) => {
                             return <li key={ability.name} style={{ listStylePosition: 'inside' }}>{ability.name}</li>
                         })
                         : <li></li>
                 }</ul>
-                <div style={{ width: '30vw' }}>
+                <div style={{ width: '30vw' }} className="halft">
                     <img src={
                         pokeData.sprites
                             ? pokeData.sprites.front_default
-                            : null
-                    } style={{ height: 300, width: 300 }} />
+                            : load
+                    } style={{ height: 300}} alt="not_avaible" />
 
                 </div>
-                <div style={{ height: 250, width: '30vw' }}>
+                <div style={{ height: 250, width: '30vw' }} className={"bar-style"}>
                     <BarChart barData={barData} />
                 </div>
             </div>
-            <h2 style={{marginTop: 150, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <h2 className={"panah"} style={{marginTop: 150, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <span style={{ fontSize: 100 }}>&#8681;</span>
                     All Pokemon Below
                 <span style={{ fontSize: 100 }}>&#8681;</span>

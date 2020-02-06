@@ -54,3 +54,18 @@
     background-color: black !important;
     border: 3px double white !important;
 }
+
+@media (min-width: 0px) and (max-width: 900px) {
+    .bar-style {
+        width: 80vw !important;
+        text-align: center;
+    }
+
+    .panah {
+        margin-top: 10px !important;
+    }
+
+    .halft {
+        width: 50vw !important;
+    }
+}

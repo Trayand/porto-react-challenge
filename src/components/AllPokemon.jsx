@@ -10,7 +10,6 @@ export default function AllPokemon(props) {
     const pokemons = useSelector(state => state.pokemon.data)
     const [totalLoad, setTotalLoad] = useState(32)
     // console.log(totalLoad)
-
     useEffect(() => {
         dispatch(fetchPokemonList())
         const scrollHandler = () => {
@@ -29,25 +28,26 @@ export default function AllPokemon(props) {
     //     alert(window.pageYOffset);
     // },[document.documentElement.scrollTop])
 
-    const scroller = () => {
+    const scroller = (name) => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         })
+        console.log(name);
         // console.log(document.documentElement.scrollHeight +' '+ document.documentElement.scrollTop + ', ' + document.documentElement.clientHeight)
         // alert(document.documentElement.scrollTop - (document.documentElement.scrollHeight -  document.documentElement.clientHeight) )
     }
 
     return (
         <>
-            <ul style={{ marginBottom: 100 }}>
+            <ul style={{ marginBottom: 30 }}>
                 {
                     pokemons.results
                         ? pokemons.results.slice(0, totalLoad).map(pokemon => {
                             return <Link
                                 to={"/" + pokemon.name} key={pokemon.url}>
                                 <Button
-                                    onClick={scroller}
+                                    onClick={() => scroller(pokemon.name)}
                                     variant="outline-light" className="kartu timbul"
                                 >{pokemon.name}</Button></Link>
                         })
@@ -55,7 +55,7 @@ export default function AllPokemon(props) {
                 }
             </ul>
 
-            <p style={{ marginBottom: 50 }}>{
+            <p style={{ marginBottom: 100 }}>{
                 totalLoad > 966
                 ? ''
                 : 'scroll more to find more'
